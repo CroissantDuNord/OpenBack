@@ -1,0 +1,26 @@
+right click on chest:
+    cancel event
+    if {placed::%player%::*} contains event-location:
+        if difference between {lastrightclick::%event-location%} and now >= 30 minutes:
+            remove event-location from {placed::%player%::*}
+        if difference between {lastrightclick::%event-location%} and now < 30 minutes:
+            set {_dif} to difference between {lastrightclick::%event-location%} and now
+            set {_rem} to "%difference between {_dif} and 30 minutes%"       
+            send title " "
+            replace every " minutes" with "m" in {_rem}     
+            replace every " seconds" with "s" in {_rem}     
+            send subtitle "&cWait %{_rem}% to loot this chest again!"
+
+    else:
+        set {lastrightclick::%event-location%} to now
+        set {_num_item} to random integer between 2 and 5
+        send title " "
+        send subtitle "&aCollected %{_num_item}% Item"
+        give_item({_num_item}, player) 
+        add event-location to {placed::%player%::*}
+        add date to {open_cooldown::%player%::*}
+
+function give_item(item_num: number, p: player):
+    loop {_item_num} times:
+        give stone to {_p}
+
