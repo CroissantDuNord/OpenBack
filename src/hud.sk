@@ -1,3 +1,12 @@
-every 10 tick in world "world":
+every 15 tick in world "world":
     loop all players:
-        send action bar "&7%health of loop-player*2%&f/%max health of loop-player*2% &c❤ &8- &7%saturation of loop-player%&f/20 &6&lSat. &8-&f%food level of loop-player*2%&f/20 &e&lHung."  to loop-player
+        send action bar "&7%health of loop-player*2%&f/%max health of loop-player*2% &c❤ &8- &7%saturation of loop-player%&f/20 &6&lSat. &8-&f%food level of loop-player*2%&f/20 &e&lHung. &c&lDEBUG."  to loop-player
+
+
+on player world change:
+    player is in "world":
+        send title "&f&lThe Hub" with subtitle "&7""Our New Home"""  
+    player is in "thelab":
+        send title "&9&lThe Laboratory" with subtitle "&1""The Gateway"""
+    player is in "level0":
+        send title "&f&lLevel 0" with subtitle "&7""Tutorial Level"""

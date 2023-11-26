@@ -1,0 +1,29 @@
+on join:
+    send "&7DEBUG: this was faked as first join"
+    give unbreakable iron hoe with custom model data 3 with all flag hidden named "&fCrowbar" with lore " ", "&7The tool made for every man.", " " ,"&fDamage: &7+2", "&fMining Speed: &7+1", " ", "&8⭐" and "&8&lTRASH WEAPON" to player
+
+
+command /p_test:
+    trigger:
+        send "OK RN CINMATIC"
+        intro_cin(player)
+
+
+function intro_cin(p: player):
+    teleport {_p} to location(-30, 40, -28, world "thelaboutside")
+    wait 5 seconds 
+    send title " " with subtitle "&fYou do not even know what you got yourself into." to {_p}
+    wait 10 seconds
+    send title " " with subtitle "&fWe are sure of that." to {_p}
+    wait 10 seconds 
+    send title "&lTeam Byte x OpenBack" with subtitle "dearly presents.." to {_p}
+    wait 4 seconds
+    send title "&f&lThe Backrooms" with subtitle " " to {_p} 
+    wait 7 seconds
+    teleport {_p} to location(0, 66, 0, world "thelab")
+
+on click on dark oak button:
+    intro_cin(player)
+
+on walk on netherite block:
+    teleport player to location(0, 65, 0, world "level0")
