@@ -1,0 +1,3 @@
+every 10 tick in world "world":
+    loop all players:
+        send action bar "&7%health of loop-player*2%&f/%max health of loop-player*2% &c❤ &8- &7%saturation of loop-player%&f/20 &6&lSat. &8-&f%food level of loop-player*2%&f/20 &e&lHung."  to loop-player
