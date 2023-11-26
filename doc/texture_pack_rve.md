@@ -1,5 +1,7 @@
 # TeamByte Backrooms Texture Pack Explained
 
+Note: The server is down, this pack can't be downloaded, This require me to host it here [download](https://github.com/CroissantDuNord/OpenBack/raw/main/doc/PACK.zip)
+
 The server use a custom texture pack, With [Custom Model Data](), To use multiple texture on the same item
 
 Each item with custom texture have overrides with their "Texture Location" and "ID", in multiple JSON file located in "pack\assets\minecraft\models\item\*" This files contains those ID and texture location use a give command to see them in-game (/give @p iron_hoe{CustomModelData:3} 1) This will give you an iron rod with the texture (override) of the crowbar ID 3, Change the item & ID to use another texture
