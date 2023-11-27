@@ -36,12 +36,12 @@ This will be an empty world but considered as a level (the code check for name n
 Done! Your devploment environment is ready!
 
 # Progress
-* [70%] Chest (Logic Part is done, Loot are not added)
-* [40%] HUD (Health, Sanity...)
+* [100%] Chest (Logic Part is done, Loot are not added)
+* [50%] HUD (Health, Sanity...)
 * [90%] Sanity System
-* [10%] Level Warp (Portal in Hub, Unlocking System, Logic Part)
-* [25%] Items (Items like Rod, Iron...)
-* [0%] Crafting System (Crafting GUI + System)
+* [40%] Level Warp (Portal in Hub, Unlocking System, Logic Part)
+* [30%] Items (Items like Rod, Iron...)
+* [30%] Crafting System (Crafting GUI + System)
 * [0%] Weapons (Sword + New guns)
 * [0%] Armors
 * [0%] Boss
