@@ -1,26 +1,56 @@
+# CHEST OPEN SYSTEM
+# CREATED THE 25/11/2023
+
 right click on chest:
     cancel event
     if {placed::%player%::*} contains event-location:
         if difference between {lastrightclick::%event-location%} and now >= 30 minutes:
+        # Chest cooldown ended (remove the chest from list of opened chest)
             remove event-location from {placed::%player%::*}
         if difference between {lastrightclick::%event-location%} and now < 30 minutes:
+        # Chest cooldown active (display time to player)
             set {_dif} to difference between {lastrightclick::%event-location%} and now
             set {_rem} to "%difference between {_dif} and 30 minutes%"       
             send title " "
             replace every " minutes" with "m" in {_rem}     
             replace every " seconds" with "s" in {_rem}     
             send subtitle "&cWait %{_rem}% to loot this chest again!"
-
     else:
+        # Open chest
         set {lastrightclick::%event-location%} to now
         set {_num_item} to random integer between 2 and 5
         send title " "
         send subtitle "&aCollected %{_num_item}% Item"
         give_item({_num_item}, player) 
         add event-location to {placed::%player%::*}
-        add date to {open_cooldown::%player%::*}
 
 function give_item(item_num: number, p: player):
     loop {_item_num} times:
-        give stone to {_p}
-
+        
+        # DROP FOR THE LEVEL 0
+        if world of {_p} is "level0":
+            set {_ran} to random integer between 1 and 2
+            if {_ran} is 1:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:16777141}" named "&fLucky O' Milk" with lore " ", "&7A soybean-based milk drink.", " ", "&fHunger:&7 +6", "&fSaturation: &7+8", " " and "&7&lCommon" to {_p}
+            if {_ran} is 2:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:16711656}" named "&fAlmond Water" with lore " ", "&7The most common drink in The Backrooms", "&7with a sweet hint of almond.", " ", "&fHunger:&7 +4", "&fSaturation: &7+2", "&fSanity: &7+2%%", " " and "&7&lCommon" to {_p}
+       
+        # DROP FOR LEVEL 1
+        if world of {_p} is "level1":
+            set {_ran} to random integer between 1 and 11
+            if {_ran} is between 1 and 3:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:16777141}" named "&fLucky O' Milk" with lore " ", "&7A soybean-based milk drink.", " ", "&fHunger:&7 +6", "&fSaturation: &7+8", " " and "&7&lCommon" to {_p}
+            if {_ran} is between 4 and 5:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:16711656}" named "&fAlmond Water" with lore " ", "&7The most common drink in The Backrooms", "&7with a sweet hint of almond.", " ", "&fHunger:&7 +4", "&fSaturation: &7+2", "&fSanity: &7+2%%", " " and "&7&lCommon" to {_p}
+            if {_ran} is 6:
+                give oak plank named "&fWood Piece" with lore " ", "&7Good ol' Wood", " ", "&fHint&6: Can be made into a bat!", " " and "&7&lCommon" to {_p}
+            if {_ran} is 7:
+                give iron ingot named "&fIron Ingot" with lore " ", "&7Smells like metal...", " ", "&fHint&7: Can make you some shiny gear!", " " and "&a&lUncommon" to {_p}
+            if {_ran} is 8:
+                give stick with custom model data 918 with all flags hidden named "&fIron Rod" with lore " ", "&7*Metal Pire crashing", " ", "&fHint: &7Used for weapons and tools.", " " and "&a&lUncommon" to {_p}
+            if {_ran} is 9:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:12678617}" named "&fLucky O' Milk Choco" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Chocolate.", " ", "&fHunger:&7 +6", "&fSaturation: &7+9", "&fEffect:", "&7- Regeneration (1:00)", " " and "&a&lUncommon" to {_p}
+            if {_ran} is 10:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:15511039}" named "&fLucky O' Milk Strawberry" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Strawberry.", " ", "&fHunger:&7 +5", "&fSaturation: &7+5", "&fEffect:", "&7- Speed I (1:00)", " " and "&a&lUncommon" to {_p}
+            if {_ran} is 11:
+                give potion with all flags hidden with nbt from "{CustomPotionColor:9097602}" named "&fLucky O' Milk Matcha" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Matcha.", " ", "&fHunger:&7 +5", "&fSaturation: &7+6", "&fEffect:", "&7- Night Vision (1:00)", " " and "&a&lUncommon" to {_p}

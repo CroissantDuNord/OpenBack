@@ -1,0 +1,20 @@
+on walking on black concrete:
+    if player is in world "world":
+        if the distance between the player and location (-437, -23, 51) is smaller than 4:
+            telport_level(player, 0)
+        if the distance between the player and location (-437, -23, 81) is smaller than 4:
+            telport_level(player, 1)
+
+on walking on red sand:
+    if player is in world "level0":
+        telport_level(player, 1)
+
+
+function telport_level(p: player, level: number):
+    if {_level} is -1:
+        teleport {_p} to location(-446, -23, 66, world "world")   
+    if {_level} = 0:
+        teleport {_p} to location(0, 65, 1, world "level0")   
+    if {_level} = 1:
+        teleport {_p} to location(-32, 65, -3, world "level1")       
+    

@@ -1,12 +1,21 @@
-every 15 tick in world "world":
+# HUD SYSTEM
+# CREATED THE 25/11/2023
+
+every 25 tick in world "world":
     loop all players:
-        send action bar "&7%health of loop-player*2%&f/%max health of loop-player*2% &c❤ &8- &7%saturation of loop-player%&f/20 &6&lSat. &8-&f%food level of loop-player*2%&f/20 &e&lHung. &c&lDEBUG."  to loop-player
+        send action bar "&7%health of loop-player*2%&f/%max health of loop-player*2% &c❤ &8- &7%saturation of loop-player%&f/20 &6&lSat. &8-&f%food level of loop-player*2%&f/20 &e&lHung. &8- &7%{sanity.%loop-player%}%&f%% &lSanity &8[&7%{sanity_rate.%loop-player%}%&f%% /s&8] &c&lDEBUG."  to loop-player
 
 
 on player world change:
     player is in "world":
         send title "&f&lThe Hub" with subtitle "&7""Our New Home"""  
+        set {sanity_rate.%player%} to 0.46
     player is in "thelab":
         send title "&9&lThe Laboratory" with subtitle "&1""The Gateway"""
+        set {sanity_rate.%player%} to 0.46
+    player is in "thelaboutside":
+        set {sanity_rate.%player%} to 0.35
     player is in "level0":
         send title "&f&lLevel 0" with subtitle "&7""Tutorial Level"""
+    player is in "level1":
+        send title "&f&lLevel 1" with subtitle "&7""Habitable Zone"""
