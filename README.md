@@ -3,6 +3,18 @@
 # OpenBack
 Open source server-side re-implemention of the [Minecraft Backrooms Server by TeamByte](https://www.thebackrooms.gg/) in the [Skript](https://github.com/SkriptLang/Skript) Language
 
+# Progress
+* [100%] Chest (Logic Part is done, Loot are not added)
+* [100%] HUD (Health, Sanity...)
+* [80%] Sanity System
+* [100%] Level Warp (Portal in Hub, Unlocking System, Logic Part)
+* [40%] Items (Items like Rod, Iron...)
+* [40%] Crafting System (Crafting GUI + System)
+* [0%] Weapons (Sword + New guns)
+* [30%] Mobs
+* [0%] Armors
+* [0%] Boss
+
 # How to contribute
 
 ## Devploper
@@ -34,15 +46,3 @@ This will be an empty world but considered as a level (the code check for name n
 4. Copy the code from (main/src) into your script folder (plugins\Skript\scripts)
 
 Done! Your devploment environment is ready!
-
-# Progress
-* [100%] Chest (Logic Part is done, Loot are not added)
-* [100%] HUD (Health, Sanity...)
-* [80%] Sanity System
-* [100%] Level Warp (Portal in Hub, Unlocking System, Logic Part)
-* [40%] Items (Items like Rod, Iron...)
-* [40%] Crafting System (Crafting GUI + System)
-* [0%] Weapons (Sword + New guns)
-* [30%] Mobs
-* [0%] Armors
-* [0%] Boss
