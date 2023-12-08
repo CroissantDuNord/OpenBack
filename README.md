@@ -37,12 +37,12 @@ Done! Your devploment environment is ready!
 
 # Progress
 * [100%] Chest (Logic Part is done, Loot are not added)
-* [50%] HUD (Health, Sanity...)
-* [90%] Sanity System
-* [40%] Level Warp (Portal in Hub, Unlocking System, Logic Part)
-* [30%] Items (Items like Rod, Iron...)
-* [30%] Crafting System (Crafting GUI + System)
+* [100%] HUD (Health, Sanity...)
+* [80%] Sanity System
+* [100%] Level Warp (Portal in Hub, Unlocking System, Logic Part)
+* [40%] Items (Items like Rod, Iron...)
+* [40%] Crafting System (Crafting GUI + System)
 * [0%] Weapons (Sword + New guns)
+* [30%] Mobs
 * [0%] Armors
 * [0%] Boss
-* [0%] Mobs
