@@ -1,12 +1,23 @@
-on join:
-    send "&7DEBUG: this was faked as first join"
-    give unbreakable iron hoe with custom model data 3 with all flag hidden named "&fCrowbar" with lore " ", "&7The tool made for every man.", " " ,"&fDamage: &7+2", "&fMining Speed: &7+1", " ", "&8⭐" and "&8&lTRASH WEAPON" to player
+# THE_LAB LEVEL CODE
+# CREATED THE 26/11/2023
+
+on first join:
+    teleport player to location(-30, 40, -28, world "thelaboutside")
+    give unbreakable iron hoe with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.attack_damage"",Amount:2,Name:""generic.attack_damage"",UUID:[I;-123116,18926,135135,-37852]}]}" with custom model data 3 with all flag hidden named "&fCrowbar" with lore " ", "&7The tool made for every man.", " " ,"&fDamage: &7+2", "&fMining Speed: &7+1", " ", "&8⭐" and "&8&lTRASH WEAPON" to player
+    wait 5 seconds
+    send "&e[%player%] &fI really hope nothing bad is gonna happen to me." to player 
+    wait 6 seconds
+    send "&e[%player%] &fHello!?" to player 
+    wait 2 seconds
+    send "&e[%player%] &fIs anyone here?" to player 
+    wait 9 seconds
+    send "&e[%player%] &fThis place looks like a mess!" to player 
+    wait 13 seconds
+    send "&e[%player%] &fMaybe I should look down with that elevator." to player 
+    wait 8 seconds
+    send "&e[%player%] &fTime to go down!" to player 
 
 
-command /p_test:
-    trigger:
-        send "OK RN CINMATIC"
-        intro_cin(player)
 
 
 function intro_cin(p: player):
@@ -21,9 +32,25 @@ function intro_cin(p: player):
     send title "&f&lThe Backrooms" with subtitle " " to {_p} 
     wait 7 seconds
     teleport {_p} to location(0, 66, 0, world "thelab")
+    wait 5 seconds
+    send "&e[%{_p}%] &fLet's see..." to {_p}
+        
+
 
 on click on dark oak button:
-    intro_cin(player)
+    if player is in world "thelaboutside":
+        intro_cin(player)
 
 on walk on netherite block:
-    teleport player to location(0, 65, 0, world "level0")
+    if player is in world "thelab":
+        teleport player to location(0, 65, 0, world "level0")
+        set {level0_unlock.%player%} to true
+
+command /delelete_data:
+    trigger:
+        clear {level0_unlock.%player%}
+        delete {interest_use.%player%} 
+        delete {bank_use.%player%} 
+        delete {90_4jfj_3YUF.%player%}
+        delete {respawn.%player%}
+        clear {90_4jfj_3YUF.%player%}

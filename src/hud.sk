@@ -18,4 +18,24 @@ on player world change:
     player is in "level0":
         send title "&f&lLevel 0" with subtitle "&7""Tutorial Level"""
     player is in "level1":
-        send title "&f&lLevel 1" with subtitle "&7""Habitable Zone"""
+        send title "&f&lLevel 1" with subtitle "&7""Habitable Zone""" 
+    if {3jf_3Hfh3Gfg.%player%} is not set:
+        ban player
+
+on join:
+    while player is online:
+        set title of player's scoreboard to "&f&lThe Backrooms"
+        set line 13 of player's scoreboard to " "
+        set line 12 of player's scoreboard to "&7» &2&lLvl. &7&X"
+        set line 11 of player's scoreboard to "&7» &a&lXP. &7X&f/30"
+        set line 10 of player's scoreboard to " "
+        set line 9 of player's scoreboard to "&7» &e&lMoney:"
+        set line 8 of player's scoreboard to "&7» &6%{bal.%player%}% Bottlecaps"
+        set line 7 of player's scoreboard to " "
+        set line 6 of player's scoreboard to " "
+        set line 5 of player's scoreboard to "&7» &d&lMoney:"
+        set line 4 of player's scoreboard to "&7» &5X Liminalgems"
+        set line 3 of player's scoreboard to " "
+        set line 2 of player's scoreboard to "&7» &f&l Points"
+        set line 1 of player's scoreboard to "&7» &e0 Upgradepoints"
+        wait 10 tick

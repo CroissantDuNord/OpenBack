@@ -1,14 +1,33 @@
 on walking on black concrete:
     if player is in world "world":
         if the distance between the player and location (-437, -23, 51) is smaller than 4:
-            telport_level(player, 0)
+            if {level0_unlock.%player%} is true:
+                telport_level(player, 0)
         if the distance between the player and location (-437, -23, 81) is smaller than 4:
-            telport_level(player, 1)
+            if {level1_unlock.%player%} is true:
+                telport_level(player, 1)
+        if the distance between the player and location (-430, 14, 66) is smaller than 4:
+            telport_level(player, -1)            
 
 on walking on red sand:
     if player is in world "level0":
+        set {level1_unlock.%player%} to true
         telport_level(player, 1)
+        
+on walking on black concrete:
+    if player is in world "level1":
+        if the distance between the player and location (53, 79, 70) is smaller than 3:        
+            telport_level(player, -1)
 
+on walking on netherite block:
+    if player is in world "level1":
+        send title "&f&lTraders Keep" with subtitle "&7B.N.T.G Base"
+
+on walking on sea lantern:
+    if player is in world "world":
+        add potion effect of levitation 2 for 3 seconds to potion effects of player
+        wait 2.9 seconds
+        teleport player to location(-425, 13, 66, world "world")
 
 function telport_level(p: player, level: number):
     if {_level} is -1:
@@ -17,4 +36,20 @@ function telport_level(p: player, level: number):
         teleport {_p} to location(0, 65, 1, world "level0")   
     if {_level} = 1:
         teleport {_p} to location(-32, 65, -3, world "level1")       
-    
+
+on break:
+    if player's gamemode is survival or adventure:
+        cancel event
+
+on place:
+    if player's gamemode is survival or adventure:
+        cancel event
+
+on damage:
+    if attacker is a player:
+        if victim is a player:
+            cancel event
+
+on right click on sign or item frame:
+    if player's gamemode is survival or adventure:
+        cancel event

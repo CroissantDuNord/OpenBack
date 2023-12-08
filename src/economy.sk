@@ -1,0 +1,46 @@
+on first join:
+    set {bal.%player%} to 0
+
+command /bal <text> <player> [<number>]:
+    trigger:
+        if arg-1 = "get":
+            send "Balance: %{bal.%arg-2%}%" to player
+        if arg-1 = "set":
+            send "Set to %arg-3%" to player
+            set {bal.%arg-2%} to arg-3
+        if arg-1 = "reset":
+            send "Value should be clean as f***" to player
+            delete {interest_use.%arg-2%} 
+            delete {bank_use.%arg-2%} 
+    
+command /bank <player>:
+    permission: server.bank
+    trigger:
+        if {bank_use.%arg-1%} is not set:
+            execute console command "/npctext %arg-1% banker"
+        else:
+            create a gui with id "bank" with virtual chest inventory with 3 rows named "&8&lBank" and shape "---------", "--x---y--", and "---------":
+                make gui slot "-" with gray stained glass pane named ""
+                make gui slot "y" with player head named "&fClaim Interest" with lore "&7Click to claim your Interest for the day!":
+                    if {time.%player%} is not set:
+                        set {time.%player%} to 0
+                        add {server.time} to {time.%player%}
+                    if {time.%player%} - {server.time} is less than or equal to 0:
+                        if {interest_use.%player%} is false:
+                            message "&e[Banker] &fSeems this is your first time claiming Interest! Here's 1%% Interest. Come back tomorrow to increase it!" to player
+                            add (1 / {bal.%player%}) * 100 to {bal.%player%}
+                            clear {interest_use.%player%}
+                        else:
+                            message "&e[Banker] &fHere's 1%% Interest. Come back tomorrow to increase it!" to player
+                            add (1 / {bal.%player%}) * 100 to {bal.%player%}
+                        clear {time.%player%}
+                        add {server.time} to {time.%player%}
+                        add 24 to {time.%player%}
+                    else:
+                        send "&cYou need to wait %{time.%player%} - {server.time}% before you can claim youer Interest again!" to player
+                make gui slot "x" with player head named "&fYour Balance" with lore "&7You currently have &6%{bal.%arg-1%}% Bottlecaps"
+            open the last gui for the arg-1   
+
+
+every 1 hours:
+    add 1 to {server.time}

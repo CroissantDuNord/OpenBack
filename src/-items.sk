@@ -1,0 +1,19 @@
+command /items:
+    trigger:
+        give potion with all flags hidden with nbt from "{CustomPotionColor:16711656}" named "&fAlmond Water" with lore " ", "&7The most common drink in The Backrooms", "&7with a sweet hint of almond.", " ", "&fHunger:&7 +4", "&fSaturation: &7+2", "&fSanity: &7+2%%", " " and "&7&lCommon" to player
+        give potion with all flags hidden with nbt from "{CustomPotionColor:15511039}" named "&fLucky O' Milk Strawberry" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Strawberry.", " ", "&fHunger:&7 +5", "&fSaturation: &7+5", "&fEffect:", "&7- Speed I (1:00)", " " and "&a&lUncommon" to player
+        give potion with all flags hidden with nbt from "{CustomPotionColor:16777141}" named "&fLucky O' Milk" with lore " ", "&7A soybean-based milk drink.", " ", "&fHunger:&7 +6", "&fSaturation: &7+8", " " and "&7&lCommon" to player
+        give stick with custom model data 918 with all flags hidden named "&fIron Rod" with lore " ", "&7*Metal Pire crashing", " ", "&fHint: &7Used for weapons and tools.", " " and "&a&lUncommon" to player
+        give scute named "&fCircuit Boarlllld" with lore " ", "&7It''s smarten than you", " " and "&a&lUncommon" to player
+
+on consume of potion:
+    if name of event-itemtype contains "Almond Water":
+        add 2 to saturation of player
+        add 2 to food level of player
+    if name of event-itemtype contains "Lucky O' Milk":
+        add 8 to saturation of player
+        add 3 to food level of player
+    if name of event-itemtype contains "Lucky O' Milk Strawberry":
+        add 5 to saturation of player
+        add 2.5 to food level of player
+        add potion effect of speed 1 for 1 minute to potion effects of player

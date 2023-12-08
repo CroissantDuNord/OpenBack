@@ -1,0 +1,119 @@
+on right click on crafting table:
+  cancel event
+  create a gui with id "craft_%player%" with virtual chest inventory with 6 rows named "&8&l{_CAT_NAME} &8[Page 1/1]" and shape "123456789", "---------", "---------", "---------", "---------" and "0abcdef00":
+    make gui slot "0" with gray stained glass pane named ""
+
+    make gui slot "a" with iron ingot named "&fMaterials":
+      open_category(player, "materials")
+    make gui slot "b" with iron sword with all flags hidden named "&fWeapons"
+    make gui slot "c" with iron chestplate with all flags hidden named "&fArmor"
+    make gui slot "d" with iron pickaxe with all flags hidden named "&fTools"
+    make gui slot "e" with chest named "&fOthers"
+    make gui slot "f" with nether star named "&fSpecial"
+
+    # Open the materials category by default
+    open_category(player, "materials")  
+  
+  open the last gui for the player
+
+# Open Category: Open a category in the GUI (Only work if GUI is called / opened)
+# p = player
+# category: category of items (meterials, )
+function open_category(p: player, category: text):
+  if {_category} = "materials":
+    edit gui with id "craft_%{_p}%":
+      make gui slot "1" with stripped birch wood named "&8Craft &fBox of Almond Water" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &710x &fAlmond Water":
+        craft_item({_p}, "almond_box")
+      make gui slot "2" with stripped birch wood named "&8Craft &fBox of Lucky O' Milk" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &710x &fLucky O' Milk": 
+        craft_item({_p}, "luckmilk_box")
+      make gui slot "3" with stick named "&8Craft &fIron Rod" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &72x &fIron Ingot":
+        craft_item({_p}, "iron_rod")
+      make gui slot "4" with string named "&8Craft &fCopper Wire" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &72x &fCopper Ingot":
+        craft_item({_p}, "copper_wire")
+      make gui slot "5" with string named "&8Craft &fCopper Coil" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &74x &fCopper Wire" and "&f- &71x &fIron Rod":
+        craft_item({_p}, "copper_coil")
+      make gui slot "6" with nether brick named "&8Craft &fLiving Fragment" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fIron Ingot", "&f- &74x &fRed Flesh" and "&f- &72x &fSkin Piece":
+        craft_item({_p}, "living_frag")
+      make gui slot "7" with fermented spider eye named "&8Craft &fLiving Core" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &72x &fIron Ingot", "&f- &71x &fSmiler Eye", "&f- &78x &fRed Flesh" and "&f- &74x &fSkin Piece":
+        craft_item({_p}, "living_core")    
+      make gui slot "8" with gold ingot named "&8Craft &fMemory Ingot" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fMemory Juice" and "&f- &716x &fIron Ingot"
+
+# Craft Item: Function used in the gui to craft an item
+# p = player
+# item: item to craft
+function craft_item(p: player, item: text):
+  if {_item} = "almond_box":
+    if get_item({_p}, "Almond Water") >= 10:
+      get_item({_p}, "Almond Water", true, 10)
+      give stripped birch wood named "&fBox of Almond Water" with lore " ", "&7<MISSING DATA>",  " " and "&a&lUncommon" to {_p}
+  
+  if {_item} = "iron_rod":
+    if get_item({_p}, "Iron Ingot") >= 2:
+      get_item({_p}, "Iron Ingot", true, 2)
+      give stick named "&fIron Rod" with lore " ", "&7*Metal Pire crashing", " ", "&fHint: &7Used for weapons and tools.", " " and "&a&lUncommon" to {_p}
+  
+  if {_item} = "luckmilk_box":
+    if get_item({_p}, "Lucky O' Milk") >= 10:
+      get_item({_p}, "Lucky O' Milk", true, 10)
+      give stripped birch wood named "&fBox of Lucky O' Milk" with lore " ", "&7<MISSING DATA>",  " " and "&a&lUncommon" to {_p}
+  
+  if {_item} = "copper_wire":
+    if get_item({_p}, "Copper Ingot") >= 2:
+      give string named "&fCopper Wire" with lore " ", "&7ZZAP!",  " " and "&a&lUncommon" to {_p}      
+      get_item({_p}, "Copper Ingot", true, 2)
+
+  if {_item} = "copper_coil":
+    if get_item({_p}, "Copper Wire") >= 4:
+      if get_item({_p}, "Iron Rod") >= 1:
+        get_item({_p}, "Copper Wire", true, 4)
+        get_item({_p}, "Iron Rod", true, 1)
+        give string named "&fCopper Coil" with lore " ", "&7[MISSING DATA]",  " " and "&a&lUncommon" to {_p}              
+  
+  if {_item} = "living_core":
+    if get_item({_p}, "Iron Ingot") >= 2:
+      if get_item({_p}, "Red Flesh") >= 8:
+        if get_item({_p}, "Skin Piece") >= 4:
+          if get_item({_p}, "Smiler Eye") >= 1:
+            get_item({_p}, "Iron Ingot", true, 2)
+            get_item({_p}, "Red Flesh", true, 8)
+            get_item({_p}, "Skin Piece", true, 4)
+            get_item({_p}, "Smiler Eye", true, 4)
+            give spider eye named "&fLiving Core" with lore " ", "&7[MISSING DATA]",  " " and "&a&lUncommon" to {_p}      
+    
+  if {_item} = "living_frag":
+    if get_item({_p}, "Red Flesh") >= 4:
+      if get_item({_p}, "Iron Ingot") >= 1:
+        if get_item({_p}, "Skin Piece") >= 2:
+          get_item({_p}, "Red Flesh", true, 4)
+          get_item({_p}, "Iron Ingot", true, 1)
+          get_item({_p}, "Skin Piece", true, 2)
+          give nether brick named "&fLiving Fragment" with lore " ", "&7[MISSING DATA]",  " " and "&a&lUncommon" to {_p}       
+          
+
+    
+            
+
+# GET_ITEM / View if player has item and/or remove item from player (TODO: Optimization)
+# p = Player
+# name = Your item name 
+# clear = True: Remove Item, False: Will not remove only check
+# num = Number of item to clear (Only work if clear is set to true)
+# return (total_item): the total of item found in inventory
+function get_item(p: player, name: text, clear: boolean = false, num: number = 0) :: number:
+  loop all items in {_p}'s inventory:
+    if name of loop-item contains {_name}:
+      add item number of loop-value to {_total_item}
+      
+      # Clear the items NOTE: Only use when you are sure the user has EVERY type of item (clear=true) 
+      if {_clear} is true:
+        broadcast "clr %{_total_item}%"
+        if {_num}-1 >= 0: # {_total_item} Value start at 0 that why we remove -1 from it
+          remove 1 from {_num}
+          broadcast "_num = %{_num}%"
+          if item number of loop-value >= {_num}+1:
+            remove {_num}+1 of loop-item from {_p}       
+          else:
+            remove 1 of loop-item from {_p}       
+  return {_total_item}
+    
+

@@ -1,28 +1,43 @@
+# ALL ITEMS / LOGIC
+# CREATED THE 26/11/2023
+
+
 command /items:
+    permission: server.debug
     trigger:
         give potion with all flags hidden with nbt from "{CustomPotionColor:16711656}" named "&fAlmond Water" with lore " ", "&7The most common drink in The Backrooms", "&7with a sweet hint of almond.", " ", "&fHunger:&7 +4", "&fSaturation: &7+2", "&fSanity: &7+2%%", " " and "&7&lCommon" to player
         give potion with all flags hidden with nbt from "{CustomPotionColor:15511039}" named "&fLucky O' Milk Strawberry" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Strawberry.", " ", "&fHunger:&7 +5", "&fSaturation: &7+5", "&fEffect:", "&7- Speed I (1:00)", " " and "&a&lUncommon" to player
         give potion with all flags hidden with nbt from "{CustomPotionColor:12678617}" named "&fLucky O' Milk Choco" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Chocolate.", " ", "&fHunger:&7 +6", "&fSaturation: &7+9", "&fEffect:", "&7- Regeneration (1:00)", " " and "&a&lUncommon" to player
         give potion with all flags hidden with nbt from "{CustomPotionColor:9097602}" named "&fLucky O' Milk Matcha" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Matcha.", " ", "&fHunger:&7 +5", "&fSaturation: &7+6", "&fEffect:", "&7- Night Vision (1:00)", " " and "&a&lUncommon" to player
+        give potion with all flags hidden with nbt from "{CustomPotionColor:9097602}" named "&fLucky O' Milk Banana" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Banana.", " ", "&fHunger:&7 +4", "&fSaturation: &7+6", "&fEffect:", "&7- Resistance (1:00)", " " and "&a&lUncommon" to player
         give potion with all flags hidden with nbt from "{CustomPotionColor:16777141}" named "&fLucky O' Milk" with lore " ", "&7A soybean-based milk drink.", " ", "&fHunger:&7 +6", "&fSaturation: &7+8", " " and "&7&lCommon" to player
         give stick with custom model data 918 with all flags hidden named "&fIron Rod" with lore " ", "&7*Metal Pire crashing", " ", "&fHint: &7Used for weapons and tools.", " " and "&a&lUncommon" to player
         give scute named "&fCircuit Board" with lore " ", "&7It's smarten than you", " " and "&a&lUncommon" to player
         give iron ingot named "&fIron Ingot" with lore " ", "&7Smells like metal...", " ", "&fHint&7: Can make you some shiny gear!", " " and "&a&lUncommon" to player
-        give oak plank named "&fWood Piece" with lore " ", "&7Good ol' Wood", " ", "&fHint&6: Can be made into a bat!", " " and "&7&lCommon" to player
-        give gray dye named "&fTough Fabric" with lore " ", "&7BNetter than leather.", " ", "&fHint&6: Can be used to make some armor!", " " and "&7&lCommon" to player
+        give oak plank named "&fWood Piece" with lore " ", "&7Good ol' Wood", " ", "&fHint&7: Can be made into a bat!", " " and "&7&lCommon" to player
+        give gray dye named "&fTough Fabric" with lore " ", "&7BNetter than leather.", " ", "&fHint&7: Can be used to make some armor!", " " and "&7&lCommon" to player
         give cookie named "&fCandy Cookie" with lore " ", "&7Not from granny.", " ", "&fHunger&7: +1", "&fSaturation&7: +1", " " and "&7&lCommon" to player
+        give gray dye named "&fTough Fabric" with lore " ", "&7Better than leather.", " ", "&fHint&7: Can be used tmake some armor!", " " and "&7&lCommon" to player
+        give rotten flesh named "&fSkin Piece" with lore " ", "&7Has probably been on someone else's body.", " ", and "&7&lCommon" to player
+        give rotten flesh named "&fRed Flesh" with lore " ", "&7Looks rubbery.", " ", and "&7&lCommon" to player
+        give spider eye named "&fSmiler Eye" with lore " ", "&7That smiler is now dead AND espacially blind.", " ", and "&a&lUncommon" to player
+        give copper ingot named "&fCopper Ingot" with lore " ", "&7Electricity!", " ", and "&a&lUncommon" to player
+        give unbreakable iron hoe with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.attack_damage"",Amount:2,Name:""generic.attack_damage"",UUID:[I;-123116,18926,135135,-37852]}]}" with custom model data 3 with all flag hidden named "&fCrowbar" with lore " ", "&7The tool made for every man.", " " ,"&fDamage: &7+2", "&fMining Speed: &7+1", " ", "&8⭐" and "&8&lTRASH WEAPON" to player
+
 
 
 on consume of potion:
     if name of event-itemtype contains "Almond Water":
         add 2 to saturation of player
         add 2 to food level of player
+        add 2 to {sanity.%player%}
     if name of event-itemtype contains "Lucky O' Milk":
         add 8 to saturation of player
         add 3 to food level of player
     if name of event-itemtype contains "Lucky O' Milk Strawberry":
         add 5 to saturation of player
         add 2.5 to food level of player
+        add potion effect of speed 1 for 1 minute to potion effects of player
     if name of event-itemtype contains "Lucky O' Milk Matcha":
         add 6 to saturation of player
         add 2.5 to food level of player
@@ -31,7 +46,11 @@ on consume of potion:
         add 9 to saturation of player
         add 3 to food level of player
         add potion effect of regeneration 1 for 1 minute to potion effects of player
-
+    if name of event-itemtype contains "Lucky O' Milk Banana":
+        add 6 to saturation of player
+        add 2 to food level of player
+        add potion effect of resistance 1 for 1 minute to potion effects of player
+    remove all glass bottle from player
 
 on consume of cookie:
     add 1 to saturation of player

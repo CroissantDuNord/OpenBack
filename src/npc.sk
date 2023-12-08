@@ -1,0 +1,101 @@
+on load:
+    set {cooldown_text} to 0.1 seconds
+
+command /npctext <player> <text>:
+    permission: server.npctext
+    trigger:
+        if arg-2 = "tom":
+            send "&e[Tom] &fI make amazing food." to arg-1
+            wait {cooldown_text} 
+            send "&e[Tom] &fYou should try some!" to arg-1
+            wait {cooldown_text}
+            send "&e[Tom] &fWhen I make it..." to arg-1
+        if arg-2 = "elissa":
+            send "&e[Elissa] &fI love my two friends!" to arg-1
+            wait {cooldown_text} 
+            send "&e[Elissa] &fThey are my only friends." to arg-1   
+        if arg-2 = "brandon":
+            send "&e[Brandon] &fThis is so cozy!" to arg-1
+        if arg-2 = "hayley":
+            send "&e[Hayley] &fCan this water boil please!?" to arg-1
+            wait {cooldown_text}             
+            send "&e[Hayley] &fI need this coffee!" to arg-1
+        if arg-2 = "isabelle":
+            send "&e[Isabelle] &fThis carpet is so comfy!" to arg-1
+            wait {cooldown_text}             
+            send "&e[Isabelle] &fI'm glued to it." to arg-1
+        if arg-2 = "banker":
+            send "&e[Banker] &fHello there!" to arg-1
+            wait {cooldown_text}             
+            send "&e[Banker] &fHow may I help you?" to arg-1
+            wait {cooldown_text}             
+            send "&e[Banker] &fWhat do I Do?" to arg-1
+            wait {cooldown_text}             
+            send "&e[Banker] &fWell, I can give you daily Interest to keep you afloat." to arg-1
+            wait {cooldown_text}             
+            send "&e[Banker] &fAnd you can check your balance here too!" to arg-1
+            wait {cooldown_text}             
+            send "&e[Banker] &fWhy not take a look?" to arg-1
+            wait {cooldown_text}
+            set {interest_use.%arg-1%} to false
+            set {bank_use.%arg-1%} to true
+            execute console command "/bank %arg-1%"
+            
+
+
+command /respawn_ac <player>:
+    permission: server.anchor
+    trigger:
+        create a gui with id "craft_%player%" with virtual chest inventory with 3 rows named "&0&l       Anchor Statue" and shape "---------", "--x---y--", and "---------":
+            make gui slot "-" with gray stained glass pane named ""
+            make gui slot "x" with lodestone named "&f&l&oSet Respawn Point" with lore " ", "&7You can set your respawn point to spawn" and "&7back at this statue after you died.":
+                message "&eRespawn point set" to player
+                set {respawn.%player%} to location of player
+                close inventory for player
+            make gui slot "y" with iron pickaxe with all flags hidden named "&f&l&oRemove Respawn Point" with lore " " and "&7You will respawn back in Level 0.":
+                clear {respawn.%player%}
+                message "&cRespawn point removed" to player
+                close inventory for player
+        open the last gui for the arg-1    
+
+command /corndog_buy <player>:
+    permission: server.shop
+    trigger:
+        create a gui with id "craft_%player%" with virtual chest inventory with 3 rows named "&7&lCordog Seller" and shape "---------", "----x----", and "---------":
+            make gui slot "-" with gray stained glass pane named ""
+            make gui slot "x" with cooked mutton named "&8Buy &fCorndog" with lore " ", "&7No, it is not made from a real dog.", "&7yes, it has a corny taste...", " ", "&fHunger&7: +3", "&fSaturation&7: +4", " ", "&7&lCommon", " ", "&fPrice &62.00 Bottlecaps", " " and "&8<Left Click> Buy x1":
+                if {bal.%player%} >= 2:
+                    message "&eYou bought &61x &fCorndog &efor 2.00 Bottlecaps" to player
+                    remove 2 from {bal.%player%} 
+                    give cooked mutton named "&fCorndog" with lore " ", "&7No, it is not made from a real dog.", "&7yes, it has a corny taste...", " ", "&fHunger&7: +3", "&fSaturation&7: +4", " " and "&7&lCommon" to player
+        open the last gui for the arg-1    
+
+command /server_info <player>:
+    permission: server.iunfo
+    trigger:
+        create a gui with id "craft_%player%" with virtual chest inventory with 3 rows named "&fServer Status" and shape "---------", "-xy---e--", and "---------":
+            make gui slot "-" with gray stained glass pane named ""
+            make gui slot "x" with brick block named "&f&lLevels" with lore "&fLevel Lab (Intro): &aDONE", "&fLevel Hub: &aDONE", "&fLevel 1: &aDONE", "&fLevel 2: &8NONE" and "&fLevel 3: &8NONE"
+            make gui slot "y" with chest named "&f&lOthers" with lore "&fItems : &630%%", "&fEconmy: &a70%%", "&fMobs: &640%%" and "&fChest + Loot: &aDONE"
+            make gui slot "e" with paper named "&f&lJoin The Project" with lore "&7Join the project on Github, everyone is welcome", "&7We need Devplopers, Players (Tester), Source...", " " and "&e&lCLICK TO VIEW GITHUB":
+                send "<open url:https://github.com/CroissantDuNord/OpenBack>&a&l[VIEW GITHUB]<reset>" to player
+        open the last gui for the arg-1   
+
+
+command /waffle_buy <player>:
+    permission: server.shop
+    trigger:
+        create a gui with id "craft_%player%" with virtual chest inventory with 3 rows named "&7&lWaffle Fries Seller" and shape "---------", "----x----", and "---------":
+            make gui slot "-" with gray stained glass pane named ""
+            make gui slot "x" with cooked mutton named "&8Buy &fWaffle Fries" with lore " ", "&7Waffle fries made", "&7from ExteremelyDusty", " ", "&fHunger&7: +2", "&fSaturation&7: +2", " ", "&7&lCommon", " ", "&fPrice &61.00 Bottlecaps", " " and "&8<Left Click> Buy x1":
+                if {bal.%player%} >= 2:
+                    message "&eYou bought &61x &fCorndog &efor 2.00 Bottlecaps" to player
+                    remove 1 from {bal.%player%} 
+                    give cooked mutton named "&fWaffle Fries" with lore " ", "&7Waffle fries made", "&7from ExteremelyDusty", " ", "&fHunger&7: +2", "&fSaturation&7: +2", " " and "&7&lCommon" to player
+        open the last gui for the arg-1  
+
+
+on respawn:
+    if {respawn.%player%} is not set:
+        set respawn location to location(0, 65, 1, world "level0")   
+    set respawn location to {respawn.%player%}

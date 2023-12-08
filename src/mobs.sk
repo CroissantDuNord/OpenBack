@@ -1,0 +1,31 @@
+on damage of zombie:
+    set {_hp} to rescale(health of victim, 0, max health of victim, 0, 100) 
+    if {bar.%attacker%} is not set:
+        set {bar.%attacker%} to boss bar with id "HPbar" with title "&8[&7Lvl. &e1&8] %display name of victim% &8[&f%health of victim%&8/&f%max health of victim%&8]" with color white
+    add attacker to {bar.%attacker%}
+    set bar title of {bar.%attacker%} to "&8[&7Lvl. &e1&8] &f%display name of victim% &8[&f%health of victim%&8/&f%max health of victim%&8]"
+    set bar progress of {bar.%attacker%} to {_hp}
+    set bar color of {bar.%attacker%} to red
+    wait 7 tick
+    set bar color of {bar.%attacker%} to white
+
+on death:
+    if victim is a zombie:
+        clear drops
+        wait 1 tick
+        delete boss bar with id "HPbar"
+        remove attacker from {bar.%attacker%}
+on death:
+    if victim is a zombie:
+        if display name of victim contains "stealer":
+            give rotten flesh named "&fSkin Piece" with lore " ", "&7Has probably been on someone else's body.", " ", and "&7&lCommon" to attacker
+        if display name of victim contains "smiler":
+            give spider eye named "&fSmiler Eye" with lore " ", "&7That smiler is now dead AND espacially blind.", " ", and "&a&lUncommon" to attacker
+        if display name of victim contains "wretch":
+            give rotten flesh named "&fRed Flesh" with lore " ", "&7Looks rubbery.", " ", and "&7&lCommon" to attacker
+
+        
+function rescale(old_value: number, old_min: number, old_max: number, new_min: number, new_max: number):: number:
+    set {_total} to ({_old_value} - {_old_min}) * ({_new_max} - {_new_min}) / ({_old_max} - {_old_min}) + {_new_min}
+    return {_total}
+

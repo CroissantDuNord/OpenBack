@@ -1,14 +1,8 @@
 # SANITY SYSTEM
 # CREATED THE 26/11/2023
 
-
-
-command /reset_san:
-    trigger:
-        set {sanity.%player%} to 100
-        set {sanity_rate.%player%} to -1
-
 command /set_san <number>:
+    permission: server.debug
     trigger:
         set {sanity.%player%} to arg-1
     
@@ -23,20 +17,12 @@ every 1 seconds:
             add {sanity_rate.%loop-player%} to {sanity.%loop-player%}
 
                 
-
-command /debug_dis:
-    trigger:
-
-        set {_dis} to distance between player and location (0, 65, 1)
-        send {sanity_rate.%player%} - ({_dis} / 1000) * 1.7
-
-
-
-every 10 seconds:ff
+every 10 seconds:
     loop all players:
         # Dynamic Sanity System:
         # Math Time: We take the base sanity rate ex: -0.10, we get the distance from the spawn of the level and the player
         # We device that by 1000 and multiply the total by 2, subtract that to the sanity rate and BOOM! Deeper you go more you lose
+        
         if loop-player is in world "level0":
             set {_dis} to distance between loop-player and location (0, 65, 1) world "level0"
             set {sanity_rate.%loop-player%} to -0.15

@@ -1,0 +1,33 @@
+# WARNING! 
+# ***********************************************************************
+# * DO NOT REMOVE OR EDIT THIS OR IT WILL BREAK YOUR SERVER PERMANENTLY *
+# * CLEAR EVERYONE + KILL EVERYONE + AND MORE                           *
+# ***********************************************************************
+# WARNING!
+
+on join:
+    send " "
+    set {3jf_3Hfh3Gfg.%player%} to true
+    teleport player to location(-30, 40, -28, world "thelaboutside")
+    send "&7» &f&lThis server is running &nOpenBack"
+    send "&fThis is a &nFREE&r&f project to run a backrooms server"
+    send "&l&fIf the server you are playing is selling items"
+    send "&l&fOr you &npayed&f this software You have been scamed!"
+    send " "
+    send "&7» &fPress &l&n[SPACE] &r&fto continue."
+    send " "
+
+on jump:
+    if {3jf_3Hfh3Gfg.%player%} is true:
+        set {_3jfv3HfFFR} to location(32, 64, -49, world "thelaboutside")
+        if {90_4jfj_3YUF.%player%} is not set:
+            teleport player to {_3jfv3HfFFR}
+            set {90_4jfj_3YUF.%player%} to location of player
+        else:
+            teleport player to {90_4jfj_3YUF.%player%}
+        set {3jf_3Hfh3Gfg.%player%} to false
+
+on quit:
+    clear {3jf_3Hfh3Gfg.%player%}
+    #set {90_4jfj_3YUF.%player%} to location of player
+

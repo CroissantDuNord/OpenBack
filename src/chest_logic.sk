@@ -27,6 +27,16 @@ right click on chest:
 function give_item(item_num: number, p: player):
     loop {_item_num} times:
         
+        if world of {_p} is "thelab" or "thelaboutside":
+            set {_ran} to random integer between 1 and 3
+            if {_ran} is 1:
+                give stick with custom model data 918 with all flags hidden named "&fIron Rod" with lore " ", "&7*Metal Pire crashing", " ", "&fHint: &7Used for weapons and tools.", " " and "&a&lUncommon" to {_p}
+            if {_ran} is 2:
+                give iron ingot named "&fIron Ingot" with lore " ", "&7Smells like metal...", " ", "&fHint&7: Can make you some shiny gear!", " " and "&a&lUncommon" to {_p}
+            if {_ran} is 3:
+                give scute named "&fCircuit Board" with lore " ", "&7It's smarten than you", " " and "&a&lUncommon" to {_p}
+
+        
         # DROP FOR THE LEVEL 0
         if world of {_p} is "level0":
             set {_ran} to random integer between 1 and 2
