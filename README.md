@@ -1,4 +1,14 @@
 ![image](https://github.com/CroissantDuNord/OpenBack/blob/main/media/banner.png?raw=true)
+<p align="center">
+    <a href="https://creativecommons.org/licenses/by-nc/4.0/deed" alt="License">
+        <img src="https://img.shields.io/badge/License-CC--BY--NC%204.0-blue?logo=creativecommons&logoColor=white" /></a>
+    <a href="https://docs.skriptlang.org/" alt="Skript">
+        <img src="https://img.shields.io/badge/Made_With-Skript-orange?logo=minetest&logoColor=orange" /></a>
+    <a href="#sponsors" alt="Sponsors on Open Collective">
+        <img src="https://img.shields.io/badge/Public_Server-Down-red?logo=spigotmc&logoColor=orange" /></a>
+        <img src="https://img.shields.io/discord/904766029014650992?logo=discord"
+            alt="chat on TeamByte Discord"></a>
+</p>
 
 # OpenBack
 Open source server-side re-implemention of the [Minecraft Backrooms Server by TeamByte](https://www.thebackrooms.gg/) in the [Skript](https://github.com/SkriptLang/Skript) Language
