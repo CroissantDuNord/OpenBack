@@ -1,3 +1,37 @@
+# WARNING 
+The CC BY-NC 4.0 License applies **only** to the code of this repository. **The content created by TeamByte**, such as **maps, logos, and names**, are **licensed under their own terms**, which you can read about below.
+https://www.thebackrooms.gg/terms-of-service
+
+# TeamByte TOS
+By accessing or using our services, you agree to be bound by the following Terms of Service. Please read these Terms carefully before playing on our server. If you do not agree with any part of these Terms, you may not use our services. You have to keep in mind that these Terms can be updated at any time.
+
+## 1. Acceptance of Terms
+By accessing or playing on our Backrooms Minecraft server, you acknowledge that you have read, understood, and agree to be bound by these Terms, as well as any other rules, policies, or guidelines posted on our server.
+
+## 2. Legal Notice
+When playing on our server you acknowledge that we do not hold the copyright, nor are we the original creators of The Backrooms creepypasta. You also need to acknowledge the fact that we are not in any way affiliated with Minecraft, Mojang Studios or Microsoft Corporation, nor is The Backrooms an official Minecraft service.
+
+## 3. User Content
+As a user of our server, you have the ability to make content of our server, videos, images, or other materials ("User Content"). By uploading User Content, you grant us a non-exclusive, worldwide, royalty-free license to use, display, reproduce, modify, and distribute your User Content for the purposes of operating and promoting the server.
+
+## 4. Server Termination and Changes *(Does not apply to OpenBack)*
+We reserve the right to suspend, terminate, or modify access to our server at any time, for any reason, without notice. We also reserve the right to change any content on our server at all times.
+
+## 5. In-Game Purchases *(Does not apply to OpenBack)*
+Our Minecraft Backrooms server may offer In-Game Purchases, allowing you to acquire virtual items, currency, or enhancements to enhance your gaming experience. These purchases may be made using real-world currency or in-game currency purchased with real money. By making in-game purchases, you acknowledge and agree that all transactions are final and non-refundable. You also understand that any virtual items acquired through in-game purchases are purely virtual and have no real-world value. We encourage responsible spending and advise users to exercise discretion when making in-game purchases. We reserve the right to modify, suspend, or discontinue any in-game purchase option at our discretion without prior notice.
+
+​## 6. Intellectual Property
+The Backrooms retains all intellectual property rights in and to the server, including but not limited to trademarks (such as Team Byte), logos, and copyrighted content. You may not use, reproduce, modify, or distribute our intellectual property without prior written permission. You are however allowed to use our Minecraft server to make User Content.
+
+## 7. Disclaimer of Warranties
+Our server is provided on an "as-is" and "as available" basis. The Backrooms makes no warranties or representations regarding the server's availability, reliability, or suitability for any purpose. We do not guarantee that our server will be uninterrupted, error-free, or fully free of harmful components.
+
+## 8. Privacy Policy *(Does not apply to OpenBack)*
+Our Privacy Policy explains how we collect, use, and disclose information from our users. By using our server, you consent to our collection and use of your information via In-Game Purchases or joining the server.
+
+## 9. Circumvention of Licensed Software
+The use of unauthorized versions of Minecraft on our server is strictly prohibited. Only legitimate copies of Minecraft obtained through authorized channels are permitted for use. We do not endorse, support, or provide assistance for pirated versions of the game, and we reserve the right to deny access to individuals found using unauthorized copies. It is your responsibility to ensure that you are using a valid and licensed version of Minecraft to access and enjoy our server's services.
+
 # Attribution-NonCommercial 4.0 International
 
 > *Creative Commons Corporation (“Creative Commons”) is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an “as-is” basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information. Creative Commons disclaims all liability for damages resulting from their use to the fullest extent possible.*
