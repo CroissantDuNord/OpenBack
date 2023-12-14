@@ -1,0 +1,82 @@
+command /shop [<text>]:
+    trigger:
+        if arg-1 is not set:
+            create a gui with id "shop" with virtual chest inventory with 3 rows named "&7&lMerchant&r" and shape "---------", "---a--b---" and "---------":
+                make gui slot "-" with gray stained glass pane named ""
+                make gui slot "a" with player head named "&f&lSell" with lore " ", "&r&7Sell items for the best exchange rates simply by" and "&7the items in the area provided!":
+                    make player execute command "/shop buy"
+                make gui slot "b" with player head named "&f&lShop" with lore " ", "&r&7Buy the highest quality items at the cheapest prices in" and "&7all the Backrooms!"
+            open the last gui for the player         
+        if arg-1 is "buy":
+            wait 1 tick
+            create a gui with id "buy" with virtual chest inventory with 6 rows named "&7&lMerchant" and shape "abcdefghi", "jklmnopqrs", "t--------", "---------", "---------" and "---------":            
+                make gui slot "a" with potion with all flags hidden with nbt from "{CustomPotionColor:16711656}" named "&fAlmond Water" with lore " ", "&7The most common drink in The Backrooms", "&7with a sweet hint of almond.", "&2", "&fHunger:&7 +4", "&fSaturation: &7+2", "&fSanity: &7+2%%", "&3", "&7&lCommon", "&4", "&fPrice: &61.00 Bottlecaps", "&5" and "&8<Left Click> Buy x1"
+                make gui slot "b" with birch wood named "&fBox of Almond Water" with lore " ", "&7Filled with tasty drinks!", " ", "&a&lUncommon", "&3", "&fPrice: &610.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "c" with cookie named "&fCandy Cookie" with lore " ", "&7Not from granny.", " ", "&fHunger&7: +1", "&fSaturation&7: +1", " ", "&7&lCommon", " &2", "&fPrice: &60.10 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "d" with potion with all flags hidden with nbt from "{CustomPotionColor:16777141}" named "&fLucky O' Milk" with lore " ", "&7A soybean-based milk drink.", " ", "&fHunger:&7 +6", "&fSaturation: &7+8", " ", "&7&lCommon", " &2", "&fPrice: &62.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1"
+                make gui slot "e" with potion with all flags hidden with nbt from "{CustomPotionColor:15511039}" named "&fLucky O' Milk Strawberry" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Strawberry.", " ", "&fHunger:&7 +5", "&fSaturation: &7+5", "&fEffect:", "&7- Speed I (1:00)", " ", "&a&lUncommon", " &2", "&fPrice: &66.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "f" with potion with all flags hidden with nbt from "{CustomPotionColor:12678617}" named "&fLucky O' Milk Choco" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Chocolate.", " ", "&fHunger:&7 +6", "&fSaturation: &7+9", "&fEffect:", "&7- Regeneration (1:00)", " ", "&a&lUncommon", " &2", "&fPrice: &67.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "g" with potion with all flags hidden with nbt from "{CustomPotionColor:9097602}" named "&fLucky O' Milk Matcha" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Matcha.", " ", "&fHunger:&7 +5", "&fSaturation: &7+6", "&fEffect:", "&7- Night Vision (1:00)", " ", "&a&lUncommon", " &2", "&fPrice: &66.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "h" with potion with all flags hidden with nbt from "{CustomPotionColor:9097602}" named "&fLucky O' Milk Banana" with lore " ", "&7A soybean-based milk drink with a", "&7hint of Banana.", " ", "&fHunger:&7 +4", "&fSaturation: &7+6", "&fEffect:", "&7- Resistance (1:00)", " ", "&a&lUncommon", " &2", "&fPrice: &68.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "i" with oak plank named "&fWood Piece" with lore " ", "&7Good ol' Wood", " ", "&fHint&7: Can be made into a bat!", " ", "&7&lCommon", " &2", "&fPrice: &62.50 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "j" with gray dye named "&fTough Fabric" with lore " ", "&7Better than leather.", " ", "&fHint&7: Can be used to make some armor!", " ", "&7&lCommon", " &2", "&fPrice: &62.25 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "k" with iron ingot named "&fIron Ingot" with lore " ", "&7Smells like metal...", " ", "&fHint&7: Can make you some shiny gear!", " ", "&a&lUncommon", " &2", "&fPrice: &63.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "l" with stick with all flags hidden named "&fIron Rod" with lore " ", "&7*Metal Pire crashing", " ", "&fHint: &7Used for weapons, tools.", " ", "&a&lUncommon", " &2", "&fPrice: &69.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "m" with rotten flesh named "&fRed Flesh" with lore " ", "&7Looks rubbery.", " ", "&7&lCommon", " &2", "&fPrice: &61.50 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "n" with rotten flesh named "&fSkin Piece" with lore " ", "&7Has probably been on someone else's body.", " ", "&7&lCommon", " &2", "&fPrice: &66.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "o" with spider eye named "&fSmiler Eye" with lore " ", "&7That smiler is now dead, espacially blind.", " ", "&a&lUncommon", " &2", "&fPrice: &616.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+                make gui slot "p" with nether brick named "&fLiving Fragment" with lore " ", "&7Can I eat this?",  " " and "&a&lUncommon", " &2", "&fPrice: &621.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1"     
+                make gui slot "q" with spider eye named "&fLiving Core" with lore " ", "&7It's beating like a heart!",  " ", "&e&lRare", " &2", "&fPrice: &658.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1"   
+                make gui slot "r" with copper ingot named "&fCopper Ingot" with lore " ", "&7Electricity!", " ", "&a&lUncommon", " &2", "&fPrice: &62.75 Bottlecaps", "&1" and "&8<Left Click> Buy x1"
+                make gui slot "s" with string named "&fCopper Wire" with lore " ", "&7ZZAP!",  "", "&a&lUncommon", " &2", "&fPrice: &65.50 Bottlecaps", "&1" and "&8<Left Click> Buy x1"   
+                make gui slot "t" with string named "&fCopper Coil" with lore " ", "&7BUZZZ!",  " ","&a&lUncommon", " &2", "&fPrice: &631.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1"           
+                make gui slot "u" with scute named "&fCircuit Board" with lore " ", "&7It's smarten than you", " ", "&a&lUncommon", " &2", "&fPrice: &630.00 Bottlecaps", "&1" and "&8<Left Click> Buy x1" 
+            open last gui for the player 
+        if arg-1 is "sell":
+            send message "&eYou are in &fSell Mode, &edrop any item to sell them. &fPress &l[SHIFT]&r&f to exit"
+            set {sellmode.%player%} to true
+        
+    
+on inventory click:
+    if the id of gui of player is "buy": 
+        if event-item is set:
+            # Get the lore of the item
+            set {_i} to event-item
+            set {_lore::*} to lore of event-item
+            # Extract the Price (using the last line minus 2)
+            set {_price} to {_lore::%size of {_lore::*}-2%}
+            replace "Price: " and " Bottlecaps" with "" in {_price}
+            set {_price} to uncolored {_price} parsed as num
+            # Check if player has money (from item price line)
+            if {_price} <= {bal.%player%}:
+                send "&eYou bought &61x &f%name of event-item% &efor %{_price}% Bottlecaps" to player
+                
+                # Remove the shop part from the lore
+                loop 4 times:
+                    set {_len} to size of {_lore::*}
+                    remove {_lore::%{_len}%} from {_lore::*}
+                set lore of {_i} to {_lore::*}
+                give {_i} to player
+                
+                remove {_price} from {bal.%player%}
+            else:
+                send "&cYou dont have enough money" to player
+
+on sneak toggle:
+    if {sellmode.%player%} is true:
+        send message "&eYou are no longer in &fSell Mode&e."
+        set {sellmode.%player%} to false
+
+on drop:
+    if {sellmode.%player%} is true:
+        cancel event
+        set {_json} to json from json file "plugins/SkJson/db/price.json"
+        set {_array::*} to values uncolored name of event-item of {_json} 
+        if {_array::1} is set:
+            wait 1 tick
+            remove event-item from player
+            send "&eYou sold &61x &f%name of event-item% &efor %{_array::1}% Bottlecaps" to player
+            add {_array::1} to {bal.%player%}
+        else:
+            send "&cYou cant sell that item."
+

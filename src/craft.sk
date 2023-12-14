@@ -1,16 +1,19 @@
 on right click on crafting table:
   cancel event
-  create a gui with id "craft_%player%" with virtual chest inventory with 6 rows named "&8&l{_CAT_NAME} &8[Page 1/1]" and shape "123456789", "---------", "---------", "---------", "---------" and "0abcdef00":
+  create a gui with id "craft_%player%" with virtual chest inventory with 6 rows named "&c&lERROR" and shape "123456780", "9ghi---0", "--------0", "--------0", "--------0" and "0abcdef0x":
     make gui slot "0" with gray stained glass pane named ""
 
     make gui slot "a" with iron ingot named "&fMaterials":
       open_category(player, "materials")
-    make gui slot "b" with iron sword with all flags hidden named "&fWeapons"
-    make gui slot "c" with iron chestplate with all flags hidden named "&fArmor"
+    make gui slot "b" with iron sword with all flags hidden named "&fWeapons":
+      open_category(player, "weapons")  
+    make gui slot "c" with iron chestplate with all flags hidden named "&fArmor":
+      open_category(player, "armor")  
     make gui slot "d" with iron pickaxe with all flags hidden named "&fTools"
     make gui slot "e" with chest named "&fOthers"
     make gui slot "f" with nether star named "&fSpecial"
-
+    make gui slot "x" with barrier named "&cExit":
+      close inventory for player
     # Open the materials category by default
     open_category(player, "materials")  
   
@@ -22,6 +25,7 @@ on right click on crafting table:
 function open_category(p: player, category: text):
   if {_category} = "materials":
     edit gui with id "craft_%{_p}%":
+      set the skript-gui name of the edited gui to "&8&lMeterials &8[Page 1/1]"
       make gui slot "1" with stripped birch wood named "&8Craft &fBox of Almond Water" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &710x &fAlmond Water":
         craft_item({_p}, "almond_box")
       make gui slot "2" with stripped birch wood named "&8Craft &fBox of Lucky O' Milk" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &710x &fLucky O' Milk": 
@@ -37,15 +41,155 @@ function open_category(p: player, category: text):
       make gui slot "7" with fermented spider eye named "&8Craft &fLiving Core" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &72x &fIron Ingot", "&f- &71x &fSmiler Eye", "&f- &78x &fRed Flesh" and "&f- &74x &fSkin Piece":
         craft_item({_p}, "living_core")    
       make gui slot "8" with gold ingot named "&8Craft &fMemory Ingot" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fMemory Juice" and "&f- &716x &fIron Ingot"
+  if {_category} = "weapons":
+    edit gui with id "craft_%{_p}%":
+      set the skript-gui name of the edited gui to "&8&lWeapons &8[Page 1/1]"
+      make gui slot "1", "2", "3", "4", "5", "6", "7" and "8" to air
+      make gui slot "1" with wooden sword named "&8Craft &fBat" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &78x &fWood Piece":
+        craft_weapon({_p}, "bat")
+      make gui slot "2" with iron sword named "&8Craft &fIron Sword" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &78x &fIron Ingot" and "&f- &71x &fIron Rod": 
+        craft_weapon({_p}, "iron_sword")
+      make gui slot "3" with iron sword named "&8Craft &fIron Knife" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &74x &fIron Ingot" and "&f- &71x &fIron Rod":
+        craft_weapon({_p}, "iron_knife")
+      make gui slot "4" with netherite sword named "&8Craft &fLiving Sword" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &72x &fLiving Core", "&f- &712x &fLiving Fragment" and "&f- &71x &fIron Rod":
+        craft_weapon({_p}, "live_sword")
+      make gui slot "5" with golden sword named "&8Craft &fMemory Sword" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &714x &fMemory Ingot" and "&f- &72x &fIron Rod":
+        craft_weapon({_p}, "X")
+  if {_category} = "armor":
+    edit gui with id "craft_%{_p}%":
+      set the skript-gui name of the edited gui to "&8&lArmor &8[Page 1/1]"
+      make gui slot "1" with leather helmet with nbt from "{display:{color:6710886}}" named "&8Craft &fTough Helmet" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &74x &fTough Fabic":
+        craft_armor({_p}, "tough_helmet")
+      make gui slot "2" with leather chestplate with nbt from "{display:{color:6710886}}" named "&8Craft &fTough Chestplate" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &76x &fTough Fabic":
+        craft_armor({_p}, "tough_chestplate")
+      make gui slot "3" with leather leggings with nbt from "{display:{color:6710886}}" named "&8Craft &fTough Leggings" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &75x &fTough Fabic":
+        craft_armor({_p}, "tough_leggings")
+      make gui slot "4" with leather boots with nbt from "{display:{color:6710886}}" named "&8Craft &fTough Boots" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &73x &fTough Fabic":
+        craft_armor({_p}, "tough_boots")
+      
+      make gui slot "5" with iron helmet named "&8Craft &fIron Helmet" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &75x &fIron Ingot":
+        craft_armor({_p}, "iron_helmet")
+      make gui slot "6" with iron chestplate named "&8Craft &fIron Chestplate" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &78x &fIron Ingot":
+        craft_armor({_p}, "iron_chestplate")
+      make gui slot "7" with iron leggings named "&8Craft &&fIron Leggings" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &77x &fIron Ingot":
+        craft_armor({_p}, "iron_leggings")
+      make gui slot "8" with iron boots named "&8Craft &fIron Boots" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " " and "&f- &74x &fIron Ingot":
+        craft_armor({_p}, "iron_boots")
+
+      make gui slot "9" with leather helmet with nbt from "{display:{color:5048328}}" named "&8Craft &fLiving Helmet" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fLiving Core" and "&f- &78x &fLiving Fragment":
+        craft_armor({_p}, "living_helmet")
+      make gui slot "g" with leather chestplate with nbt from "{display:{color:5048328}}" named "&8Craft &fLiving Chestplate" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fLiving Core" and "&f- &712x &fLiving Fragment":
+        craft_armor({_p}, "living_chestplate")
+      make gui slot "h" with leather leggings with nbt from "{display:{color:5048328}}" named "&8Craft &fLiving Leggings" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fLiving Core" and "&f- &711x &fLiving Fragment":
+        craft_armor({_p}, "living_leggings")
+      make gui slot "i" with leather boots with nbt from "{display:{color:5048328}}" named "&8Craft &fLiving Boots" with lore " ", "&e&lCLICK &ato craft!", " ", "&f&nItem needed:", " ", "&f- &71x &fLiving Core" and "&f- &76x &fLiving Fragment":
+        craft_armor({_p}, "living_boots")
+      
+
+
+
 
 # Craft Item: Function used in the gui to craft an item
 # p = player
 # item: item to craft
-function craft_item(p: player, item: text):
+
+function craft_armor(p: player, item: text): 
+  if {_item} = "tough_helmet":
+    if get_item({_p}, "Tough Fabric") >= 4:
+      get_item({_p}, "Tough Fabric", true, 4)
+      give unbreakable leather helmet with nbt compound from "{display:{color:6710886},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:2,Operation:0,UUID:[I;1528191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fTough Helmet" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+2", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "tough_chestplate":
+    if get_item({_p}, "Tough Fabric") >= 6:
+      get_item({_p}, "Tough Fabric", true, 4)
+      give unbreakable leather chestplate with nbt compound from "{display:{color:6710886},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:4,Operation:0,UUID:[I;1228191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fTough Chestplate" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+4", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "tough_leggings":
+    if get_item({_p}, "Tough Fabric") >= 5:
+      get_item({_p}, "Tough Fabric", true, 4)
+      give unbreakable leather leggings with nbt compound from "{display:{color:6710886},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:3,Operation:0,UUID:[I;1328191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fTough Leggings" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+3", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "tough_boots":
+    if get_item({_p}, "Tough Fabric") >= 3:
+      get_item({_p}, "Tough Fabric", true, 4)
+      give unbreakable leather boots with nbt compound from "{display:{color:6710886},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:2,Operation:0,UUID:[I;1428191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fTough Boots" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+2", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  
+  if {_item} = "iron_helmet":
+    if get_item({_p}, "Iron Ingot") >= 4:
+      get_item({_p}, "Iron Ingot", true, 4)
+      give unbreakable iron helmet with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:3,Operation:0,UUID:[I;1928191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fIron Helmet" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+3", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "iron_chestplate":
+    if get_item({_p}, "Iron Ingot") >= 6:
+      get_item({_p}, "Iron Ingot", true, 4)
+      give unbreakable iron chestplate with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:6,Operation:0,UUID:[I;2928191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fIron Chestplate" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+6", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "iron_leggings":
+    if get_item({_p}, "Iron Ingot") >= 5:
+      get_item({_p}, "Iron Ingot", true, 4)
+      give unbreakable iron leggings with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:5,Operation:0,UUID:[I;3928191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fIron Leggings" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+5", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "iron_boots":
+    if get_item({_p}, "Iron Ingot") >= 3:
+      get_item({_p}, "Iron Ingot", true, 4)
+      give unbreakable iron boots with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:3,Operation:0,UUID:[I;4928191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fIron Boots" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+3", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+
+  if {_item} = "living_helmet":
+    broadcast "ok"
+    if get_item({_p}, "Living Core") >= 1:
+      if get_item({_p}, "Living Fragment") >= 8:
+        get_item({_p}, "Living Core", true, 1)
+        get_item({_p}, "Living Fragment", true, 8)
+        give unbreakable leather helmet with nbt compound from "{display:{color:5048328},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:5,Operation:0,UUID:[I;1528191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fLiving Helmet" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+4", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "living_chestplate":
+    if get_item({_p}, "Living Core") >= 1:
+      if get_item({_p}, "Living Fragment") >= 12:
+        get_item({_p}, "Living Core", true, 1)
+        get_item({_p}, "Living Fragment", true, 12)
+      give unbreakable leather chestplate with nbt compound from "{display:{color:5048328},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:7,Operation:0,UUID:[I;1228191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fLiving Chestplate" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+7", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "living_leggings":
+    if get_item({_p}, "Living Core") >= 1:
+      if get_item({_p}, "Living Fragment") >= 11:
+        get_item({_p}, "Living Core", true, 1)
+        get_item({_p}, "Living Fragment", true, 11)
+      give unbreakable leather leggings with nbt compound from "{display:{color:5048328},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:6,Operation:0,UUID:[I;1328191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fLiving Leggings" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+6", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  if {_item} = "living_boots":
+    if get_item({_p}, "Living Core") >= 1:
+      if get_item({_p}, "Living Fragment") >= 6:
+        get_item({_p}, "Living Core", true, 1)
+        get_item({_p}, "Living Fragment", true, 6)
+      give unbreakable leather boots with nbt compound from "{display:{color:5048328},AttributeModifiers:[{AttributeName:""generic.armor"",Name:""generic.armor"",Amount:4,Operation:0,UUID:[I;1428191175,547703981,-1087270516,-1017462654]}]}" with all flag hidden named "&fLiving Boots" with lore " ", "&7[MISSING DATA]", " " ,"&fProtection: &7+5", " ", "&8★☆☆☆☆" and "&8&lCommon Armor" to {_p}
+  
+
+
+
+function craft_weapon(p: player, item: text):
+  if {_item} = "bat":
+    if get_item({_p}, "Wood Piece") >= 8:
+      get_item({_p}, "Wood Piece", true, 10)
+      give unbreakable wooden sword with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.attack_damage"",Amount:4,Name:""generic.attack_damage"",UUID:[I;-123116,18926,135135,-37852]}]}" with custom model data 3 with all flag hidden named "&fBat" with lore " ", "&7[MISSING DATA]", " " ,"&fDamage: &7+4", " ", "&8⭐" and "&8&lTRASH WEAPON" to {_p}
+  if {_item} = "iron_sword":
+    if get_item({_p}, "Iron Ingot") >= 8:
+      if get_item({_p}, "Iron Rod") >= 1:      
+        get_item({_p}, "Iron Ingot", true, 8)
+        get_item({_p}, "Iron Rod", true, 1)
+        give unbreakable iron sword with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.attack_damage"",Amount:6,Name:""generic.attack_damage"",UUID:[I;-123116,18926,135135,-37852]}]}" with custom model data 3 with all flag hidden named "&fIron Sword" with lore " ", "&7Pointy!", " " ,"&fDamage: &7+6", " ", "&a★☆☆☆☆" and "&a&lUncommon Weapon" to {_p}
+  if {_item} = "iron_knife":
+    if get_item({_p}, "Iron Ingot") >= 8:
+      if get_item({_p}, "Iron Rod") >= 1:      
+        get_item({_p}, "Iron Ingot", true, 8)
+        get_item({_p}, "Iron Rod", true, 1)
+        give unbreakable iron sword with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.movement_speed"",Name:""generic.movement_speed"",Amount:0.04,Operation:0,UUID:[I;-1018544683,-678672661,-1804962318,204255795]},{AttributeName:""generic.attack_damage"",Name:""generic.attack_damage"",Amount:6,Operation:0,UUID:[I;1395475228,-2079765540,-1346660680,854851918]}]}" with custom model data 3 with all flag hidden named "&fIron Knife" with lore " ", "&7Pointy!", " ", "&fDamage: &7+6", "&fSpeed: &7+15%%", " ", "&a★☆☆☆☆" and "&a&lUncommon Weapon" to {_p}
+  if {_item} = "live_sword":
+    if get_item({_p}, "Living Core") >= 2:
+      if get_item({_p}, "Living Fragment") >= 12:      
+        if get_item({_p}, "Iron Rod") >= 1:       
+          get_item({_p}, "Living Core", true, 2)
+          get_item({_p}, "Living Fragment", true, 12)
+          get_item({_p}, "Iron Rod", true, 1)
+          give unbreakable netherite sword with nbt compound from "{AttributeModifiers:[{AttributeName:""generic.attack_damage"",Amount:9,Name:""generic.attack_damage"",UUID:[I;-123116,18926,135135,-37852]}]}" with custom model data 3 with all flag hidden named "&fLiving Sword" with lore " ", "&7[MISSING DATA]", " " ,"&fDamage: &7+9", " ", "&e★☆☆☆☆" and "&e&lRare Weapon" to {_p}
+          
+
+
+function craft_item(p: player, item: text): 
   if {_item} = "almond_box":
     if get_item({_p}, "Almond Water") >= 10:
       get_item({_p}, "Almond Water", true, 10)
-      give stripped birch wood named "&fBox of Almond Water" with lore " ", "&7<MISSING DATA>",  " " and "&a&lUncommon" to {_p}
+      give stripped birch wood named "&fBox of Almond Water" with lore " ", "&7Filled with tasty drinks!",  " " and "&a&lUncommon" to {_p}
   
   if {_item} = "iron_rod":
     if get_item({_p}, "Iron Ingot") >= 2:
@@ -55,19 +199,19 @@ function craft_item(p: player, item: text):
   if {_item} = "luckmilk_box":
     if get_item({_p}, "Lucky O' Milk") >= 10:
       get_item({_p}, "Lucky O' Milk", true, 10)
-      give stripped birch wood named "&fBox of Lucky O' Milk" with lore " ", "&7<MISSING DATA>",  " " and "&a&lUncommon" to {_p}
+      give stripped birch wood named "&fBox of Lucky O' Milk" with lore " ", "&7Filled with tasty drinks!",  " " and "&a&lUncommon" to {_p}
   
   if {_item} = "copper_wire":
     if get_item({_p}, "Copper Ingot") >= 2:
       give string named "&fCopper Wire" with lore " ", "&7ZZAP!",  " " and "&a&lUncommon" to {_p}      
       get_item({_p}, "Copper Ingot", true, 2)
-
+ 
   if {_item} = "copper_coil":
     if get_item({_p}, "Copper Wire") >= 4:
       if get_item({_p}, "Iron Rod") >= 1:
         get_item({_p}, "Copper Wire", true, 4)
         get_item({_p}, "Iron Rod", true, 1)
-        give string named "&fCopper Coil" with lore " ", "&7[MISSING DATA]",  " " and "&a&lUncommon" to {_p}              
+        give string named "&fCopper Coil" with lore " ", "&7BUZZZ!",  " " and "&a&lUncommon" to {_p}              
   
   if {_item} = "living_core":
     if get_item({_p}, "Iron Ingot") >= 2:
@@ -78,8 +222,8 @@ function craft_item(p: player, item: text):
             get_item({_p}, "Red Flesh", true, 8)
             get_item({_p}, "Skin Piece", true, 4)
             get_item({_p}, "Smiler Eye", true, 4)
-            give spider eye named "&fLiving Core" with lore " ", "&7[MISSING DATA]",  " " and "&a&lUncommon" to {_p}      
-    
+            give spider eye named "&fLiving Core" with lore " ", "&7It's beating like a heart!",  " " and "&e&lRare" to {_p}      
+
   if {_item} = "living_frag":
     if get_item({_p}, "Red Flesh") >= 4:
       if get_item({_p}, "Iron Ingot") >= 1:
@@ -87,13 +231,10 @@ function craft_item(p: player, item: text):
           get_item({_p}, "Red Flesh", true, 4)
           get_item({_p}, "Iron Ingot", true, 1)
           get_item({_p}, "Skin Piece", true, 2)
-          give nether brick named "&fLiving Fragment" with lore " ", "&7[MISSING DATA]",  " " and "&a&lUncommon" to {_p}       
+          give nether brick named "&fLiving Fragment" with lore " ", "&7Can I eat this?",  " " and "&a&lUncommon" to {_p}       
           
 
-    
-            
-
-# GET_ITEM / View if player has item and/or remove item from player (TODO: Optimization)
+# GET_ITEM / View if player has item and/or remove item from player
 # p = Player
 # name = Your item name 
 # clear = True: Remove Item, False: Will not remove only check
@@ -115,5 +256,3 @@ function get_item(p: player, name: text, clear: boolean = false, num: number = 0
           else:
             remove 1 of loop-item from {_p}       
   return {_total_item}
-    
-
