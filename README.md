@@ -18,7 +18,7 @@ Open source server-side re-implemention of the [Minecraft Backrooms Server by Te
 * [100%] HUD (Health, Sanity, Scoreboard)
 * [100%] Economy (Shop, NPC Single Item Shop, Bank)
 * [100%] Level Warp (Note: only for working levels)
-* [80%] Sanity System
+* [100%] Sanity System
 * [70%] Crafting System (Everything work just some items are missing)
 * [60%] Armors (Boss armor, Momory Armor missing)
 * [50%] Items (Items like Rod, Iron...)
