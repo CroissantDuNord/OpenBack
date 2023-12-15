@@ -5,7 +5,7 @@ command /set_san <number>:
     permission: server.debug
     trigger:
         set {sanity.%player%} to arg-1
-    
+
 every 1 seconds:
     loop all players:
         if {sanity_rate.%loop-player%} is greater than 0:
@@ -16,7 +16,6 @@ every 1 seconds:
         else:
             add {sanity_rate.%loop-player%} to {sanity.%loop-player%}
 
-                
 every 10 seconds:
     loop all players:
         # Dynamic Sanity System:
@@ -63,3 +62,6 @@ every 10 seconds:
                     send title "&4JUST DIE" to loop-player with fadein 0 second
                     wait 7 tick
                     reset the title of loop-player
+        if {sanity.%loop-player%} is below 0:
+            kill loop-player   
+            set {sanity.%loop-player%} to 100  
